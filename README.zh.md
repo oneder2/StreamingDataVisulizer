@@ -59,63 +59,63 @@
 
 ## 📂 项目结构
 
-.├── data_analyzer_app         # Flask 应用主包  
+.├── data_analyzer_app         # Flask 应用主包
 
- │   ├── init.py           # 应用工厂 (create_app)  
+ │   ├── init.py           # 应用工厂 (create_app)
 
- │   ├── config.py             # 配置文件 (可选)  
+ │   ├── config.py             # 配置文件 (可选)
 
- │   ├── main                  # 主页/上传蓝图  
+ │   ├── main                  # 主页/上传蓝图
 
- │   │   ├── init.py  
+ │   │   ├── init.py
 
- │   │   └── routes.py  
+ │   │   └── routes.py
 
- │   ├── analysis              # 分析功能蓝图  
+ │   ├── analysis              # 分析功能蓝图
 
- │   │   ├── init.py  
+ │   │   ├── init.py
 
- │   │   ├── routes.py         # 分析、导出、歌单 API 路由  
+ │   │   ├── routes.py         # 分析、导出、歌单 API 路由
 
- │   │   └── utils.py          # 核心数据处理和分析逻辑  
+ │   │   └── utils.py          # 核心数据处理和分析逻辑
 
- │   │     
+ │   │   
 
- │   ├── static                # 静态文件 (由 Flask 提供服务)  
+ │   ├── static                # 静态文件 (由 Flask 提供服务)
 
- │   │   ├── dist              # Tailwind 构建输出目录  
+ │   │   ├── dist              # Tailwind 构建输出目录
 
- │   │   │   └── output.css    # 最终生成的 CSS 文件  
+ │   │   │   └── output.css    # 最终生成的 CSS 文件
 
- │   │   ├── index.html        # 主 HTML 页面  
+ │   │   ├── index.html        # 主 HTML 页面
 
- │   │   ├── script.js         # 前端 JavaScript 逻辑  
+ │   │   ├── script.js         # 前端 JavaScript 逻辑
 
- │   │   └── styles.css        # (可能已合并到 input.css)  
+ │   │   └── styles.css        # (可能已合并到 input.css)
 
- │   └── uploads               # 上传文件存储目录 (应用包内)  
+ │   └── uploads               # 上传文件存储目录 (应用包内)
 
- ├── src                       # Tailwind 源文件目录  
+ ├── src                       # Tailwind 源文件目录
 
- │   └── input.css             # Tailwind 输入 CSS 文件 (含 @tailwind 指令和自定义样式)  
+ │   └── input.css             # Tailwind 输入 CSS 文件 (含 @tailwind 指令和自定义样式)
 
- ├── venv/                     # Python 虚拟环境 (推荐)  
+ ├── venv/                     # Python 虚拟环境 (推荐)
 
- ├── node_modules/             # Node.js 依赖  
+ ├── node_modules/             # Node.js 依赖
 
- ├── cert.pem                  # SSL 证书 (可选, 用于 HTTPS)  
+ ├── cert.pem                  # SSL 证书 (可选, 用于 HTTPS)
 
- ├── key.pem                   # SSL 私钥 (可选, 用于 HTTPS)  
+ ├── key.pem                   # SSL 私钥 (可选, 用于 HTTPS)
 
- ├── requirements.txt          # Python 依赖列表  
+ ├── requirements.txt          # Python 依赖列表
 
- ├── package.json              # Node.js 项目/依赖配置  
+ ├── package.json              # Node.js 项目/依赖配置
 
- ├── package-lock.json         # Node.js 依赖锁定文件  
+ ├── package-lock.json         # Node.js 依赖锁定文件
 
- ├── tailwind.config.js        # Tailwind CSS 配置文件  
+ ├── tailwind.config.js        # Tailwind CSS 配置文件
 
- └── run.py                    # Flask 应用启动脚本  
+ └── run.py                    # Flask 应用启动脚本
 
  
 ## 🚀 开始使用
