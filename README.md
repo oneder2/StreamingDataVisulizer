@@ -59,6 +59,7 @@ An interactive web-based application that allows users to upload music-related s
 
 ## 📂 Project Structure
 
+```text
 .
 ├── data_analyzer_app         # Main Flask application package  
 │   ├── init.py           # Application factory (create_app)  
@@ -89,6 +90,7 @@ An interactive web-based application that allows users to upload music-related s
 ├── package-lock.json         # Node.js dependency lock file  
 ├── tailwind.config.js        # Tailwind CSS configuration file  
 └── run.py                    # Flask application startup script  
+```
 
 
 ## 🚀 Getting Started
