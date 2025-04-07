@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATA-THONE Dashboard</title>
+
+    <link rel="stylesheet" href="/static/dist/output.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .modal { display: none; /* Hidden by default */ }
+        .modal.active { display: flex; /* Show when active */ }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-4 md:p-8">
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 max-w-full mx-auto px-4">
+        <div class="hidden md:block md:col-span-1"></div>
+        <div class="col-span-1 md:col-span-10 space-y-6 lg:space-y-8">
+
+            <header class="text-center py-4 relative">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100">DATA-THONE Dashboard</h1>
+                <button id="darkModeToggle" title="Toggle Dark Mode" class="absolute top-1/2 right-0 transform -translate-y-1/2 p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-900">
+                    <svg class="sun-icon h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-6.364-.386 1.591-1.591M3 12h2.25m.386-6.364 1.591 1.591" /></svg>
+                    <svg class="moon-icon h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" /></svg>
+                </button>
+            </header>
+
+            <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div class="lg:col-span-1 bg-white dark:bg-gray-800 p-5 rounded-xl shadow-lg space-y-5 border border-gray-200 dark:border-gray-700">
+                    <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 text-center border-b border-gray-200 dark:border-gray-700 pb-3">Data Dashboard</h2>
+                    <div>
+                        <label for="fileInput" class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">Upload Excel or CSV File:</label>
+                        <div class="mt-1">
+                             <input type="file" id="fileInput" accept=".xlsx, .xls, .csv" class="block w-full text-sm text-gray-500 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 focus:outline-none file:mr-4 file:py-2 file:px-4 file:rounded-l-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 dark:file:bg-blue-900/50 file:text-blue-700 dark:file:text-blue-300 hover:file:bg-blue-100 dark:hover:file:bg-blue-800/50"/>
+                        </div>
+                         <p id="fileNameDisplay" class="text-xs text-gray-500 dark:text-gray-400 mt-1.5 truncate">No file selected.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">Columns for Single Analysis:</h3>
+                        <ul id="columnList" class="max-h-48 overflow-y-auto border border-gray-200 dark:border-gray-600 rounded-md text-sm divide-y divide-gray-200 dark:divide-gray-600">
+                            <li class="p-3 text-gray-400 dark:text-gray-500 bg-white dark:bg-gray-700/50 rounded-md">Upload a file to see columns.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <label for="weightColumnSelect" class="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">Weight Single Analysis By (Optional):</label>
+                        <select id="weightColumnSelect" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-offset-gray-800 sm:text-sm rounded-md disabled:opacity-50 disabled:bg-gray-100 dark:disabled:bg-gray-700" disabled>
+                            <option value="">-- No Weighting --</option>
+                        </select>
+                    </div>
+                    <div class="mt-4 space-y-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+                         <button id="analyzeArtistsBtn" class="w-full inline-flex items-center justify-center gap-x-2 bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150 shadow-sm hover:shadow-md">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                              Analyze Top Artists
+                         </button>
+                         <button id="analyzeSongsBtn" class="w-full inline-flex items-center justify-center gap-x-2 bg-purple-600 hover:bg-purple-700 dark:bg-purple-700 dark:hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150 shadow-sm hover:shadow-md">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                              Analyze Top Songs
+                         </button>
+                    </div>
+                </div>
+
+                <div id="singleColumnAnalysisArea" class="lg:col-span-2 bg-white dark:bg-gray-800 p-5 rounded-xl shadow-lg flex flex-col border border-gray-200 dark:border-gray-700">
+                    <div class="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-3 mb-4">
+                        <h3 id="analysisTitle" class="text-xl font-semibold text-gray-700 dark:text-gray-200 flex-grow text-center">Single Column Analysis</h3>
+                        <div id="chartExportButtons" class="flex-shrink-0" style="display: none;">
+                             <button id="exportBarChartBtn" title="Export Histogram as PNG" class="ml-3 p-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md" style="display: none;">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                             </button>
+                             <button id="exportPieChartBtn" title="Export Pie Chart as PNG" class="ml-3 p-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md" style="display: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                             </button>
+                        </div>
+                    </div>
+                    <!-- ... (Numeric, Boolean, NoData Areas 不变) ... -->
+                    <div id="numericDisplayArea" class="grid grid-cols-1 md:grid-cols-3 gap-6 flex-grow" style="display: none;"> <div class="md:col-span-1 space-y-1.5 text-sm border-r-0 md:border-r md:border-gray-200 dark:md:border-gray-700 md:pr-6"> <h4 class="text-base font-semibold mb-3 text-gray-600 dark:text-gray-300">Statistics</h4> <div class="grid grid-cols-2 gap-x-3 gap-y-1.5"> <span class="text-gray-500 dark:text-gray-400">MEAN:</span> <span id="stat_mean" class="font-mono text-right text-gray-800 dark:text-gray-200">N/A</span> <span class="text-gray-500 dark:text-gray-400">VAR:</span> <span id="stat_variance" class="font-mono text-right text-gray-800 dark:text-gray-200">N/A</span> <span class="text-gray-500 dark:text-gray-400">SD:</span> <span id="stat_std" class="font-mono text-right text-gray-800 dark:text-gray-200">N/A</span> <span class="col-span-2 pt-2 border-t border-gray-100 dark:border-gray-700 mt-2"></span> <span class="text-gray-500 dark:text-gray-400">MIN:</span> <span id="stat_min" class="font-mono text-right text-gray-800 dark:text-gray-200">N/A</span> <span class="text-gray-500 dark:text-gray-400">Q1:</span> <span id="stat_q1" class="font-mono text-right text-gray-800 dark:text-gray-200">N/A</span> <span class="text-gray-500 dark:text-gray-400">MEDIAN:</span> <span id="stat_median" class="font-mono text-right text-gray-800 dark:text-gray-200">N/A</span> <span class="text-gray-500 dark:text-gray-400">Q3:</span> <span id="stat_q3" class="font-mono text-right text-gray-800 dark:text-gray-200">N/A</span> <span class="text-gray-500 dark:text-gray-400">MAX:</span> <span id="stat_max" class="font-mono text-right text-gray-800 dark:text-gray-200">N/A</span> <span class="col-span-2 pt-2 border-t border-gray-100 dark:border-gray-700 mt-2"></span> <span class="text-gray-500 dark:text-gray-400">COUNT:</span> <span id="stat_count" class="font-mono text-right text-gray-800 dark:text-gray-200">N/A</span> </div> </div> <div class="md:col-span-2 flex flex-col"> <h4 id="barChartTitle" class="text-base font-semibold mb-3 text-gray-600 dark:text-gray-300 text-center flex-shrink-0">Histogram</h4> <div class="relative h-96 flex-grow bg-gray-50 dark:bg-gray-700/40 rounded-lg p-2 border border-gray-200 dark:border-gray-700"> <canvas id="dataChart"></canvas> </div> </div> </div>
+                    <div id="booleanDisplayArea" class="flex flex-col items-center flex-grow" style="display: none;"> <h4 id="pieChartTitle" class="text-base font-semibold mb-3 text-gray-600 dark:text-gray-300 text-center flex-shrink-0">Boolean Distribution</h4> <div class="relative h-96 w-full max-w-sm flex-grow"> <canvas id="pieChart"></canvas> </div> </div>
+                    <div id="noDataDisplayArea" class="flex flex-col items-center justify-center flex-grow text-gray-500 dark:text-gray-400" style="display: flex;"> <p id="noDataMessage" class="text-center px-4 text-lg">Select a column for analysis.</p> </div>
+                </div>
+            </section>
+
+            <section id="rankingAnalysisArea" class="mt-6 lg:mt-8 bg-white dark:bg-gray-800 p-5 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700" style="display: none;">
+                 <div class="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-3 mb-4 flex-wrap gap-2">
+                     <h2 id="rankingTitle" class="text-xl font-semibold text-gray-700 dark:text-gray-200 flex-grow text-center md:text-left">Top Ranking</h2>
+                     <div id="tableExportButtons" class="flex-shrink-0 space-x-2" style="display: none;">
+                         <button id="exportTableCsvBtn" title="Export Table as CSV" class="p-1.5 text-sm inline-flex items-center gap-x-1 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 rounded-md">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                             CSV
+                         </button>
+                          <button id="exportTableXlsxBtn" title="Export Table as XLSX" class="p-1.5 text-sm inline-flex items-center gap-x-1 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-gray-700 rounded-md">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                             XLSX
+                         </button>
+                     </div>
+                     <div id="spotifyPlaylistButtonContainer" class="flex-shrink-0" style="display: none;">
+                          <button id="generateSpotifyPlaylistBtn" title="Generate Spotify Playlist URIs" class="p-1.5 text-sm inline-flex items-center gap-x-1 text-teal-600 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-gray-700 rounded-md">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                              Spotify Playlist
+                          </button>
+                     </div>
+                 </div>
+                 <!-- ... (Ranking Content and Load More Buttons 不变) ... -->
+                 <div id="rankingContent" class="overflow-x-auto"> <p class="text-center text-gray-500 dark:text-gray-400 py-4">Click an analysis button above.</p> </div>
+                 <div class="mt-5 text-center"> <button id="loadMoreArtistsBtn" class="inline-flex items-center justify-center gap-x-1.5 bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150 shadow-sm hover:shadow-md" style="display: none;"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg> Load More Artists </button> <button id="loadMoreSongsBtn" class="inline-flex items-center justify-center gap-x-1.5 bg-indigo-500 hover:bg-indigo-600 dark:bg-indigo-600 dark:hover:bg-indigo-500 text-white font-semibold py-2 px-4 rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-150 shadow-sm hover:shadow-md" style="display: none;"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg> Load More Songs </button> </div>
+            </section>
+
+            <section class="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h2 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-3 text-center border-b border-gray-200 dark:border-gray-700 pb-3">AI Suggestion</h2>
+                <div class="text-center text-gray-500 dark:text-gray-400 py-8">(AI suggestions will appear here)</div>
+            </section>
+
+        </div>
+        <div class="hidden md:block md:col-span-1"></div>
+    </div>
+
+    <div id="messageBox" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-md text-white shadow-lg text-sm z-[1000] opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out"></div>
+    <div id="loadingOverlay" class="fixed inset-0 bg-gray-900/30 dark:bg-black/50 flex items-center justify-center z-[9999]" style="display: none;"><div class="spinner"></div></div>
+
+    <div id="spotifyPlaylistModal" class="modal fixed inset-0 bg-gray-900/60 dark:bg-black/70 backdrop-blur-sm z-[5000] items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 w-full max-w-lg relative max-h-[80vh] flex flex-col">
+            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Spotify Playlist URIs</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Copy the URIs below and paste them into Spotify (e.g., using search or third-party tools) to create your playlist.</p>
+            <textarea id="spotifyUrisTextarea" readonly class="w-full h-48 flex-grow resize-none p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-sm font-mono focus:outline-none focus:ring-1 focus:ring-blue-500 dark:text-gray-200"></textarea>
+            <div class="mt-4 flex justify-end space-x-3">
+                <button id="copySpotifyUrisBtn" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md shadow-sm">Copy URIs</button>
+                <button id="closeSpotifyModalBtn" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-700 dark:text-gray-200 text-sm font-medium rounded-md shadow-sm">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

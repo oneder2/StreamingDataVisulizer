@@ -1,0 +1,61 @@
+/* src/input.css */
+
+/* 1. 引入 Tailwind 的基础样式、组件和工具类 */
+/* 这些指令会被 Tailwind 构建过程替换成实际的 CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 2. 添加您所有的自定义 CSS 规则 */
+/* (这些规则将直接包含在最终的 output.css 中) */
+
+/* --- 来自原 styles.css / 内联 style --- */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Basic transition for theme changes */
+body, .bg-white, .bg-gray-50, .bg-gray-100,
+.text-gray-500, .text-gray-600, .text-gray-700, .text-gray-800, .text-gray-900,
+.border-gray-200, .border-gray-300, .border-gray-600, .border-gray-700,
+button, select, input, th, td, li, canvas {
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Dark Mode Toggle Icon Visibility */
+#darkModeToggle svg { display: none; }
+html.dark #darkModeToggle .moon-icon { display: inline-block; }
+html:not(.dark) #darkModeToggle .sun-icon { display: inline-block; }
+
+/* Custom styles */
+.column-item { cursor: pointer; }
+/* .column-type (基础样式由 Tailwind 提供) */
+#weightColumnSelect:disabled { cursor: not-allowed; }
+
+/* Ranking Table Styling */
+#rankingContent td.rank-col,
+#rankingContent td.metric-col {
+     text-align: right;
+     font-variant-numeric: tabular-nums;
+}
+
+/* Message box styling */
+#messageBox { transform: translateX(-50%) translateY(20px); }
+#messageBox.show { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+
+/* Loading overlay */
+#loadingOverlay { backdrop-filter: blur(2px); }
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border-left-color: #3b82f6; /* blue-500 */
+    animation: spin 1s linear infinite;
+}
+html.dark .spinner {
+     border: 4px solid rgba(255, 255, 255, 0.1);
+     border-left-color: #60a5fa; /* blue-400 */
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- 结束自定义样式 --- */
