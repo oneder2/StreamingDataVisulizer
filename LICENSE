@@ -1,65 +1,44 @@
-# 版权所有 (c) [2025] [oneder2]
+--------------------------------------------------------------------------------
+English Version
+--------------------------------------------------------------------------------
 
-## 保留所有权利
+MIT License
 
-特此声明，版权所有者保留与本软件及其相关文档（以下简称“软件”）相关的一切权利。
+Copyright (c) [Year] [Your Name or Organization Name]
 
-## 有限许可
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-尽管有上述规定，版权所有者特此授予任何获取本软件副本的人以下有限的、非排他的、不可转让的许可：
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-1.  **浏览与查看：** 允许出于个人学习、研究或教育目的，在线或离线浏览、查看本软件的源代码和相关文档。
-2.  **学习交流：** 允许在非商业性的、纯粹技术学习和交流的语境下（例如：博客文章分析代码、学术会议讨论、教学演示）引用或讨论本软件的部分代码片段或设计思路，但必须明确注明来源和版权归属。
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-## 禁止的行为
+--------------------------------------------------------------------------------
+中文版
+--------------------------------------------------------------------------------
 
-除上述明确授予的有限许可外，**禁止**以下任何行为：
+MIT 许可证
 
-* **修改：** 对软件进行任何形式的修改、改编或翻译。
-* **分发：** 以任何形式（源代码或二进制形式）复制、分发、传播或公开提供本软件的全部或部分内容。
-* **商业使用：** 将本软件用于任何商业目的，包括但不限于：直接销售、集成到商业产品中、提供商业服务等。
-* **创作衍生作品：** 基于本软件创作任何衍生作品。
-* **再许可：** 将本软件的任何权利授予第三方（Sublicense）。
-* 移除或更改任何版权声明或本许可文本。
+版权所有 (c) [Year] [Your Name or Organization Name]
 
-## 免责声明
+特此授权，任何获得本软件及其相关文档副本（以下简称“软件”）的人，可以免费地、不受任何限制地处理本软件，包括但不限于使用、复制、修改、合并、出版、分发、再许可和/或销售软件副本的权利，并允许获得软件的人员这样做，但须遵守以下条件：
+
+上述版权声明和本许可声明应包含在本软件的所有副本或主要部分中。
 
 本软件按“原样”提供，不作任何明示或暗示的保证，包括但不限于对适销性、特定用途适用性和非侵权性的保证。在任何情况下，作者或版权持有人均不对任何索赔、损害或其他责任承担任何责任，无论是在合同诉讼、侵权行为或其他方面，即使是由软件本身或与软件的使用或其他交易有关引起的。
 
-## 联系方式
-
-如果您希望获得超出本有限许可范围的权利（例如：商业使用、修改、分发等），请联系版权所有者：gellar@tutanota.com
-
 --------------------------------------------------------------------------------
-
-# Copyright (c) [2025] [oneder2]
-
-## All Rights Reserved
-
-All rights pertaining to this software and its associated documentation files (the "Software") are hereby reserved by the copyright holder.
-
-## Limited License
-
-Notwithstanding the foregoing, the copyright holder hereby grants any person obtaining a copy of this Software the following limited, non-exclusive, non-transferable license:
-
-1.  **Browse and Viewing:** Permission to browse and view the source code and associated documentation of the Software, online or offline, solely for personal learning, research, or educational purposes.
-2.  **Learning and Discussion:** Permission to reference or discuss parts of the Software's code snippets or design concepts in non-commercial contexts purely for technical learning and discussion (e.g., blog posts analyzing the code, academic conference discussions, teaching demonstrations), provided that the source and copyright attribution are clearly stated.
-
-## Prohibited Actions
-
-Except for the limited license explicitly granted above, any of the following actions are **strictly prohibited**:
-
-* **Modification:** Modifying, adapting, or translating the Software in any form.
-* **Distribution:** Copying, distributing, disseminating, or making publicly available the Software, in whole or in part, in any form (source or binary).
-* **Commercial Use:** Using the Software for any commercial purpose, including but not limited to: direct sale, integration into commercial products, providing commercial services, etc.
-* **Creation of Derivative Works:** Creating any derivative works based on the Software.
-* **Sublicensing:** Granting any rights to the Software to a third party (Sublicense).
-* Removing or altering any copyright notices or this license text.
-
-## Disclaimer of Warranty
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 ## Contact
 
 If you wish to obtain rights beyond the scope of this limited license (e.g., for commercial use, modification, distribution, etc.), please contact gellar@tutanota.com.
