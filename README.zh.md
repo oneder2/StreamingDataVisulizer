@@ -85,7 +85,7 @@
  ├── key.pem                   # SSL 私钥 (可选, 用于 HTTPS)  
  ├── requirements.txt          # Python 依赖列表  
  ├── package.json              # Node.js 项目/依赖配置  
- ├── package-lock.json         # Node.js 依赖锁定文件  
+ ├── package-lock.json         # Node.js 依赖锁定文件  
  ├── tailwind.config.js        # Tailwind CSS 配置文件  
  └── run.py                    # Flask 应用启动脚本  
 
