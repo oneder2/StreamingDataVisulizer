@@ -60,35 +60,35 @@ An interactive web-based application that allows users to upload music-related s
 ## 📂 Project Structure
 
 .
-├── data_analyzer_app         # Main Flask application package
-│   ├── init.py           # Application factory (create_app)
-│   ├── config.py             # Configuration file (optional)
-│   ├── main                  # Main page/upload blueprint
-│   │   ├── init.py
-│   │   └── routes.py
-│   ├── analysis              # Analysis features blueprint
-│   │   ├── init.py
-│   │   ├── routes.py         # Analysis, export, playlist API routes
-│   │   └── utils.py          # Core data processing and analysis logic
-│   │
-│   ├── static                # Static files (served by Flask)
-│   │   ├── dist              # Tailwind build output directory
-│   │   │   └── output.css    # Final generated CSS file
-│   │   ├── index.html        # Main HTML page
-│   │   ├── script.js         # Frontend JavaScript logic
-│   │   └── styles.css        # (Potentially merged into input.css)
-│   └── uploads               # Uploaded file storage directory (within app package)
-├── src                       # Tailwind source files directory
-│   └── input.css             # Tailwind input CSS file (with @tailwind directives and custom styles)
-├── venv/                     # Python virtual environment (Recommended)
-├── node_modules/             # Node.js dependencies
-├── cert.pem                  # SSL certificate (optional, for HTTPS)
-├── key.pem                   # SSL private key (optional, for HTTPS)
-├── requirements.txt          # Python dependency list
-├── package.json              # Node.js project/dependency configuration
-├── package-lock.json         # Node.js dependency lock file
-├── tailwind.config.js        # Tailwind CSS configuration file
-└── run.py                    # Flask application startup script
+├── data_analyzer_app         # Main Flask application package  
+│   ├── init.py           # Application factory (create_app)  
+│   ├── config.py             # Configuration file (optional)  
+│   ├── main                  # Main page/upload blueprint  
+│   │   ├── init.py  
+│   │   └── routes.py  
+│   ├── analysis              # Analysis features blueprint  
+│   │   ├── init.py  
+│   │   ├── routes.py         # Analysis, export, playlist API routes  
+│   │   └── utils.py          # Core data processing and analysis logic  
+│   │  
+│   ├── static                # Static files (served by Flask)  
+│   │   ├── dist              # Tailwind build output directory  
+│   │   │   └── output.css    # Final generated CSS file  
+│   │   ├── index.html        # Main HTML page  
+│   │   ├── script.js         # Frontend JavaScript logic  
+│   │   └── styles.css        # (Potentially merged into input.css)  
+│   └── uploads               # Uploaded file storage directory (within app package)  
+├── src                       # Tailwind source files directory  
+│   └── input.css             # Tailwind input CSS file (with @tailwind directives and custom styles)  
+├── venv/                     # Python virtual environment (Recommended)  
+├── node_modules/             # Node.js dependencies  
+├── cert.pem                  # SSL certificate (optional, for HTTPS)  
+├── key.pem                   # SSL private key (optional, for HTTPS)  
+├── requirements.txt          # Python dependency list  
+├── package.json              # Node.js project/dependency configuration  
+├── package-lock.json         # Node.js dependency lock file  
+├── tailwind.config.js        # Tailwind CSS configuration file  
+└── run.py                    # Flask application startup script  
 
 
 ## 🚀 Getting Started
